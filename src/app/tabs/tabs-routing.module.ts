@@ -18,6 +18,10 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'tab1/:id',
+        loadChildren: () => import('../tab1/view-employer/view-employer.module').then( m => m.ViewEmployerPageModule)
+      },
+      {
         path: 'tab2',
         children: [
           {

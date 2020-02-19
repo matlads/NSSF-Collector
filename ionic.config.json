@@ -1,5 +1,7 @@
 {
   "name": "NSSF Collector",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

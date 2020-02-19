@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Employees
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,20 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Employees</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-searchbar
+    animated
+    debounce=700
+    [(ngModel)]="searchTerm"
+    (ionChange)="setFilteredItems()"
+  ></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let employer of data" routerLink="/tabs/tab1/{{ employer['Employer Number'] }}" routerDirection="forward">
+      {{ employer['Employer Name'] }}
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Employer</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid padding>
+    <ion-row>
+      <ion-col>
+        Name
+      </ion-col>
+      <ion-col>
+        {{ employer['Employer Name'] }}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        Number
+      </ion-col>
+      <ion-col>
+        {{ employer['Employer Number'] }}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>Phone Number</ion-col>
+      <ion-col>{{ employer['Employer Phone Number'] }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>Branch</ion-col>
+      <ion-col>{{ employer['Branch'] }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>RM</ion-col>
+      <ion-col>{{ employer['RM'] }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>RM Tel Number</ion-col>
+      <ion-col>{{ employer['RM Phone Number'] }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>Coordinates</ion-col>
+      <ion-col> 
+        <div *ngIf="location">
+        {{ location.coords.latitude }},
+        {{ location.coords.longitude }}
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="location && location.coords && location.coords.accuracy">
+      <ion-col>Accuracy</ion-col>
+      <ion-col>
+        {{ location.coords.accuracy }}
+        <ion-icon *ngIf="location.coords.accuracy <= env.accuracyThreshold" name="thumbs-up"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-button expand="block" (click)="startPositionWatch()">
+    Get Location
+  </ion-button>
+
+  <ion-button expand="block" (click)="save()" *ngIf="location && location.coords.accuracy <= env.accuracyThreshold">
+    Save
+    <ion-icon name="save"></ion-icon>
+  </ion-button> 
+</ion-content>
