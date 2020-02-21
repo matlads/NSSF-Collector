@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { environment } from "../../../environments/environment";
 import { AlertController, NavController } from "@ionic/angular";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 const watchOptions = {
   timeout: 360000,
@@ -36,6 +37,7 @@ export class ViewEmployerPage implements OnInit {
   env: any;
   username: string;
   password: string;
+  contactData: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +45,8 @@ export class ViewEmployerPage implements OnInit {
     private geolocation: Geolocation,
     private alertController: AlertController,
     public http: HttpClient,
-    private storage: Storage
+    private storage: Storage,
+    private formBuilder: FormBuilder, 
   ) {
     this.id = this.route.snapshot.paramMap.get("id");
     this.employer = this.employersService.get(this.id);
@@ -51,6 +54,15 @@ export class ViewEmployerPage implements OnInit {
 
     this.getUsername();
     this.getPassword();
+
+    this.contactData = this.formBuilder.group({
+      contact_1_name: ['', Validators.required],
+      contact_1_tel: ['', Validators.required],
+      contact_2_name: [''],
+      contact_2_tel: [''],
+      closed_gate: ['', Validators.required],
+      notes: ['']
+    })
   }
 
   ngOnInit() {
@@ -87,6 +99,7 @@ export class ViewEmployerPage implements OnInit {
     const url = this.env.apiUrl + "/employers/create";
     var obj = {
       data: this.cloneAsObject(this.employer),
+      contact_data: this.cloneAsObject(this.contactData.value),
       location: this.cloneAsObject(this.location),
       username: this.username,
       password: this.password

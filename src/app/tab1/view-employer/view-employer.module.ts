@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
 import { ViewEmployerPageRoutingModule } from './view-employer-routing.module';
-
 import { ViewEmployerPage } from './view-employer.page';
 
 @NgModule({
@@ -13,7 +10,9 @@ import { ViewEmployerPage } from './view-employer.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewEmployerPageRoutingModule
+    ViewEmployerPageRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [ViewEmployerPage]
 })
