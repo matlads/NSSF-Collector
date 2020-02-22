@@ -56,11 +56,11 @@ export class ViewEmployerPage implements OnInit {
     this.getPassword();
 
     this.contactData = this.formBuilder.group({
-      contact_1_name: ['', Validators.required],
-      contact_1_tel: ['', Validators.required],
+      closed_gate: ['n', Validators.required],
+      contact_1_name: [''],
+      contact_1_tel: [''],
       contact_2_name: [''],
       contact_2_tel: [''],
-      closed_gate: ['', Validators.required],
       notes: ['']
     })
   }

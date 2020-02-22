@@ -70,33 +70,35 @@
 
   <form [formGroup]="contactData">
     <ion-item>
-      <ion-label>Contact 1 Name</ion-label>
-      <ion-input type="text" formControlName="contact_1_name" placeholder="required"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Contact 1 Tel</ion-label>
-      <ion-input type="text" formControlName="contact_1_tel" placeholder="required"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Contact 2 Name</ion-label>
-      <ion-input type="text" formControlName="contact_2_name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Contact 2 Tel</ion-label>
-      <ion-input type="text" formControlName="contact_2_tel"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label>Closed Gate?</ion-label>
       <ion-select value="n" formControlName="closed_gate">
         <ion-select-option value="n">No</ion-select-option>
         <ion-select-option value="y">Yes</ion-select-option>        
       </ion-select>
     </ion-item>
-
     <ion-item>
       <ion-label position="floating">Notes</ion-label>
       <ion-textarea formControlName="notes" placeholder="Enter more information here..."></ion-textarea>
     </ion-item>
+
+    <div *ngIf="contactData.value.closed_gate === 'n'">
+      <ion-item>
+        <ion-label>Contact 1 Name</ion-label>
+        <ion-input type="text" formControlName="contact_1_name" placeholder="required"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Contact 1 Tel</ion-label>
+        <ion-input type="text" formControlName="contact_1_tel" placeholder="required"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Contact 2 Name</ion-label>
+        <ion-input type="text" formControlName="contact_2_name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Contact 2 Tel</ion-label>
+        <ion-input type="text" formControlName="contact_2_tel"></ion-input>
+      </ion-item>
+    </div>
   </form>
 
   <ion-button expand="block" (click)="startPositionWatch()">
