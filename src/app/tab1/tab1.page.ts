@@ -20,9 +20,7 @@ export class Tab1Page {
 
   setFilteredItems(){
     if ( this.username ) {
-      if (this.searchTerm.length >= 3) {
-        this.data = this.employersService.filterItems(this.searchTerm);
-      }
+      this.data = this.employersService.filterItems(this.searchTerm);
     }
   }
 
