@@ -22,6 +22,9 @@
       <ion-label>Password</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
-    <ion-button ion-button type="submit" [disabled]="!settings.valid">Submit</ion-button>
+    <ion-button expand="block" type="submit" [disabled]="!settings.valid">Submit</ion-button>
   </form>
+
+  <ion-button expand="full" routerLink="/tabs/tab2/terms-and-conditions" >Terms &amp; Conditions</ion-button>
+
 </ion-content>
