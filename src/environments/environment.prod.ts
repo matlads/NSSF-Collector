@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  accuracyThreshold: 15,
+  accuracyThreshold: 20,
   apiUrl: 'https://www.afriadd.com/collectors/nssf',
 
 };

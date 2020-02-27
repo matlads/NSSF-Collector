@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  accuracyThreshold: 100000,
+  accuracyThreshold: 120000,
   apiUrl: 'http://127.0.0.1:8000/nssf',
 
 };
