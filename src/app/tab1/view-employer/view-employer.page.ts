@@ -75,7 +75,6 @@ export class ViewEmployerPage implements OnInit {
     this.watch = this.geolocation.watchPosition(watchOptions).subscribe(
       data => {
         that.location = data;
-        console.log(data);
       },
       error => {
         console.log(error);
@@ -109,10 +108,15 @@ export class ViewEmployerPage implements OnInit {
       this.presentAlert("No Username found");
     } else {
       var string = JSON.stringify(obj);
-      return this.http.post<any>(url, string).subscribe(d => {
-        this.presentAlert("Employer Saved Successfully");
-        // this.navCtrl.navigateBack('/tabs/tab1');
-      });  
+      return this.http.post<any>(url, string).subscribe(
+        (response) => {
+          this.presentAlert("Employer Saved Successfully");
+          // this.navCtrl.navigateBack('/tabs/tab1');
+        },
+        (error) => {
+          this.presentAlert(error.error.result);
+        }
+      );
     }
   }
 
