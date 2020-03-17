@@ -91,6 +91,18 @@ export class AddEmployerPage implements OnInit {
     await alert.present();
   }
 
+  async presentError(message) {
+    message = message || "Error occurred. Check data, WiFi or Server status";
+    const alert = await this.alertController.create({
+      header: "Error",
+      subHeader: "Saving",
+      message: message,
+      buttons: ["OK"]
+    });
+
+    await alert.present();
+  }
+
   save() {
     const url = this.env.apiUrl + "/employers/new/";
     var obj = {
@@ -112,7 +124,7 @@ export class AddEmployerPage implements OnInit {
             // this.navCtrl.navigateBack('/tabs/tab1');
           },
           (error) => {
-            this.presentAlert(error.error.result);
+            this.presentError(error.error.result);
           }
         );  
     }
