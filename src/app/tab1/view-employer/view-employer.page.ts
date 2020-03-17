@@ -114,7 +114,7 @@ export class ViewEmployerPage implements OnInit {
           // this.navCtrl.navigateBack('/tabs/tab1');
         },
         (error) => {
-          this.presentAlert(error.error.result);
+          this.presentError(error.error.result);
         }
       );
     }
@@ -130,6 +130,20 @@ export class ViewEmployerPage implements OnInit {
 
     await alert.present();
   }
+
+  async presentError(message) {
+    message = message || "Error occurred. Check data, WiFi or Server status";
+    const alert = await this.alertController.create({
+      header: "Error",
+      subHeader: "Saving",
+      message: message,
+      buttons: ["OK"]
+    });
+
+    await alert.present();
+  }
+
+
 
   getUsername() {
 		this.storage.get('username').then(val => {
