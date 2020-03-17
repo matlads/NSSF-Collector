@@ -105,10 +105,16 @@ export class AddEmployerPage implements OnInit {
       this.presentAlert("No Username found");
     } else {
       var string = JSON.stringify(obj);
-      return this.http.post<any>(url, string).subscribe(d => {
-        this.presentAlert("New Employer Saved Successfully");
-        // this.navCtrl.navigateBack('/tabs/tab1');
-      });  
+      return this.http.post<any>(url, string)
+        .subscribe(
+          (response) => {
+            this.presentAlert("New Employer Saved Successfully");
+            // this.navCtrl.navigateBack('/tabs/tab1');
+          },
+          (error) => {
+            this.presentAlert(error.error.result);
+          }
+        );  
     }
   }
 
