@@ -18,12 +18,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-searchbar
-    animated
-    debounce=700
-    [(ngModel)]="searchTerm"
-    (ionChange)="setFilteredItems()"
+  <ion-searchbar 
+    [formControl]="searchControl"
+    (ionChange)="onSearchInput()"
   ></ion-searchbar>
+
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
 
   <ion-list>
     <ion-item *ngFor="let employer of data" routerLink="/tabs/tab1/{{ employer['Employer Number'] }}" routerDirection="forward">
